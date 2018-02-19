@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace appIncidentes
 {
-    public partial class frmPrincipal : Form, ISujeto
+    public partial class frmPrincipal : Form
     {
         public frmPrincipal()
         {
@@ -43,41 +43,102 @@ namespace appIncidentes
 
         }
 
-        public void Rgistro()
+        public Incidentes Rgistro()
         {
-            Incidentes inc;
+            Incidentes inc = null;
+
+            if(comboTipo.SelectedIndex == 0)
+            {
+                inc = new Telefono();
+
+                inc.Descripcion = textDescripcion.Text;
+                inc.Duracion = Convert.ToInt32(numericUpDown1.Value);
+
+                if (radioBajo.Checked)
+                {
+                    inc.Gravedad = Gravedad.Baja;
+                }
+
+                if (radioMedio.Checked)
+                {
+                    inc.Gravedad = Gravedad.Media;
+                }
+                if (radioAlto.Checked)
+                {
+                    inc.Gravedad = Gravedad.Alta;
+                }
+
+                inc.Prioridad = Convert.ToInt32( comboPrioridad.SelectedIndex);
+
+                inc.Tiquete = Convert.ToInt32(textTiquetes.Text);           
+
+            }
+
+            if (comboTipo.SelectedIndex == 1)
+            {
+                inc = new Internet();
+
+                inc.Descripcion = textDescripcion.Text;
+                inc.Duracion = Convert.ToInt32(numericUpDown1.Value);
+
+                if (radioBajo.Checked)
+                {
+                    inc.Gravedad = Gravedad.Baja;
+                }
+
+                if (radioMedio.Checked)
+                {
+                    inc.Gravedad = Gravedad.Media;
+                }
+                if (radioAlto.Checked)
+                {
+                    inc.Gravedad = Gravedad.Alta;
+                }
+
+                inc.Prioridad = Convert.ToInt32(comboPrioridad.SelectedIndex);
+
+                inc.Tiquete = Convert.ToInt32(textTiquetes.Text);
+
+            }
+
+            if (comboTipo.SelectedIndex == 2)
+            {
+                inc = new Television();
+
+                inc.Descripcion = textDescripcion.Text;
+                inc.Duracion = Convert.ToInt32(numericUpDown1.Value);
+
+                if (radioBajo.Checked)
+                {
+                    inc.Gravedad = Gravedad.Baja;
+                }
+
+                if (radioMedio.Checked)
+                {
+                    inc.Gravedad = Gravedad.Media;
+                }
+                if (radioAlto.Checked)
+                {
+                    inc.Gravedad = Gravedad.Alta;
+                }
+
+                inc.Prioridad = Convert.ToInt32(comboPrioridad.SelectedIndex);
+
+                inc.Tiquete = Convert.ToInt32(textTiquetes.Text);
+
+            }
+
+
+            return inc;
+
+        }
+   
+
+        public void Notificar()
+        {
+            throw new NotImplementedException();
         }
 
-        //public void Registrar(IObservador ob)
-        //{
-        //    Incidentes incidentes;
-
-        //    int tiquetes = Convert.ToInt32(textTiquetes.Text);
-        //    string descripcion = textDescripcion.Text;
-        //    int duracion = numericUpDown1.TabIndex;
-        //    int prioridad = comboPrioridad.SelectedIndex;
-        //    string tipo = "";
-
-        //    if (comboTipo.SelectedItem.Equals("Telefono"))
-        //    {
-        //        incidentes = new Telefono();
-        //        tipo = "Telefono";
-        //    }
-        //    else
-        //    {
-        //        if (comboTipo.SelectedItem.Equals("Internet"))
-        //        {
-        //            incidentes = new Internet();
-        //            tipo = "Internet";
-        //        }
-        //        else
-        //        {
-        //            incidentes = new Television();
-        //            tipo = "Television";
-        //        }
-        //    }
-        //}
-
-        
+       
     }
 }
